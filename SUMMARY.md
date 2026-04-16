@@ -5,7 +5,12 @@
 * [Khởi đầu nhanh (Quick Start)](gioi-thieu/khoi-dau-nhanh.md)
 * [Cấu trúc tổng thể của app](gioi-thieu/cau-truc-app.md)
 
-## Màn hình Tổng quan
+## Hồ sơ tài khoản
+* [Xem và chỉnh sửa hồ sơ](ho-so/ho-so.md)
+* [Thay đổi mật khẩu](ho-so/mat-khau.md)
+* [Đổi ngôn ngữ](ho-so/ngon-ngu.md)
+
+## Màn hình Tổng quan (Chuỗi)
 * [Dashboard chuỗi cửa hàng](tong-quan/dashboard.md)
 * [Chuyển đổi giữa các cửa hàng](tong-quan/chuyen-cua-hang.md)
 
@@ -15,6 +20,11 @@
 * [Tạo và quản lý order](ql-order/tao-order.md)
 * [Tab Phục vụ](ql-order/phuc-vu.md)
 * [Tab Lịch sử](ql-order/lich-su.md)
+
+## QL Đặt chỗ
+* [Tổng quan QL Đặt chỗ](ql-dat-cho/tong-quan.md)
+* [Tạo đặt chỗ mới](ql-dat-cho/tao-dat-cho.md)
+* [Quản lý danh sách đặt chỗ](ql-dat-cho/danh-sach.md)
 
 ## Bếp/Bar
 * [Tổng quan Bếp/Bar](bep-bar/tong-quan.md)
@@ -30,6 +40,11 @@
 * [Quản lý danh mục](ql-thuc-don/danh-muc.md)
 * [Món tùy chọn](ql-thuc-don/mon-tuy-chon.md)
 
+## QL Khách hàng
+* [Tổng quan QL Khách hàng](ql-khach-hang/tong-quan.md)
+* [Danh sách khách hàng](ql-khach-hang/danh-sach.md)
+* [Thông tin chi tiết khách hàng](ql-khach-hang/chi-tiet.md)
+
 ## Báo cáo KD
 * [Báo cáo tổng quan](bao-cao/tong-quan.md)
 * [Thống kê doanh thu](bao-cao/doanh-thu.md)
@@ -44,6 +59,15 @@
 * [Thống kê theo ca](bao-cao/theo-ca.md)
 * [Đánh giá của khách hàng](bao-cao/danh-gia.md)
 * [Doanh thu thẻ thành viên](bao-cao/the-thanh-vien.md)
+* [Thống kê trả món](bao-cao/tra-mon.md)
+* [Thống kê theo giờ](bao-cao/theo-gio.md)
+* [Thống kê điều chỉnh hoá đơn](bao-cao/dieu-chinh-hoa-don.md)
+* [Doanh thu theo đối tác giao hàng](bao-cao/doi-tac-giao-hang.md)
+* [Báo cáo đặt chỗ](bao-cao/dat-cho.md)
+* [Thống kê TIP](bao-cao/tip.md)
+* [Báo cáo lượt thích](bao-cao/luot-thich.md)
+* [Báo cáo nguồn khách hàng](bao-cao/nguon-khach-hang.md)
+* [Báo cáo thống kê nhóm khách hàng](bao-cao/nhom-khach-hang.md)
 
 ## QL Nhân viên
 * [Xem danh sách nhân viên](ql-nhan-vien/danh-sach.md)
@@ -56,6 +80,15 @@
 * [Mở ca mới](ql-ca/mo-ca.md)
 * [Xem lịch sử ca](ql-ca/lich-su-ca.md)
 * [Đóng ca và xuất báo cáo](ql-ca/dong-ca.md)
+
+## Vật tư
+* [Tổng quan Vật tư](vat-tu/tong-quan.md)
+* [Quản lý thiết bị POS](vat-tu/thiet-bi-pos.md)
+
+## QL Kho
+* [Tổng quan QL Kho](ql-kho/tong-quan.md)
+* [Nhập kho](ql-kho/nhap-kho.md)
+* [Xuất kho](ql-kho/xuat-kho.md)
 
 ## QL Khuyến mại
 * [Tổng quan QL Khuyến mại](ql-khuyen-mai/tong-quan.md)
