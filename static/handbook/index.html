@@ -223,8 +223,8 @@ ul.clean li::before{content:"";position:absolute;left:2px;top:7px;width:8px;heig
 .nextp{display:inline-flex;align-items:center;gap:4px;margin-left:auto;background:var(--red-soft);border:1.5px dashed var(--red);color:var(--red-deep);border-radius:9px;padding:5px 11px;font-size:11px;font-weight:700;font-family:'Baloo 2'}.nextp svg{width:13px;height:13px}
 @media(max-width:720px){.player{flex-direction:column;align-items:flex-start;gap:8px}.player .phead{flex-basis:auto}}
 /* ---- flowchart status (zoom/drag) ---- */
-.fcwrap{position:relative;border:1px solid var(--line);border-radius:16px;background:#eceef2;overflow:hidden;margin:8px 0}
-.fcview{aspect-ratio:1340/884;max-height:82vh;min-height:440px;overflow:hidden;cursor:grab;position:relative;touch-action:none}
+.fcwrap{position:relative;border:1px solid var(--line);border-radius:16px;background:#eceef2;margin:8px 0;overflow:hidden}
+.fcview{aspect-ratio:1340/884;max-height:82vh;min-height:440px;max-width:100%;overflow:hidden;cursor:grab;position:relative;touch-action:none;border-radius:15px}
 .fcview.drag{cursor:grabbing}
 .fcstage{position:absolute;top:0;left:0;width:1340px;height:884px;transform-origin:0 0;font-family:'Be Vietnam Pro',sans-serif}
 .fctools{position:absolute;right:12px;bottom:12px;display:flex;gap:6px;align-items:center;z-index:20}
@@ -590,7 +590,7 @@ footer .logo{width:34px;height:34px;background:var(--red);border-radius:10px;col
   <h4 class="block">Luồng status chi tiết — ai phụ trách (PIC) bước nào</h4>
   <p style="font-size:12.5px;color:var(--ink-soft);margin:-2px 0 8px">Sơ đồ luồng status: mỗi <strong>lane = 1 phase</strong>, node là status (PIC ghi dưới). <span style="color:#5a57d6;font-weight:700">Luồng chính</span> · <span style="color:#15a34a;font-weight:700">PASS</span> · <span style="color:#e2533c;font-weight:700">FAIL → BUGSSS → DOING</span>. <strong>Kéo để di chuyển · cuộn hoặc nút +/− để zoom.</strong></p>
   <div class="fcwrap">
-    <div class="fcview" id="fcView"><svg id="fcSvg" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block" preserveAspectRatio="xMidYMid meet"></svg></div>
+    <div class="fcview" id="fcView"><svg id="fcSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1340 884" style="width:100%;height:100%;display:block" preserveAspectRatio="xMidYMid meet"></svg></div>
     <div class="fctools"><button data-z="out" aria-label="Thu nhỏ">−</button><button data-z="reset" aria-label="Vừa khung">⊙</button><button data-z="in" aria-label="Phóng to">+</button></div>
   </div>
   <div class="note danger"><span class="nt"><svg class="ic-svg"><use href="#i-cycle"/></svg> Khi QA test FAIL</span>Task chuyển sang <strong>BUGSSS</strong> → dev fix → kéo lại về <strong>DOING</strong> và đi lại từ đầu.</div>
