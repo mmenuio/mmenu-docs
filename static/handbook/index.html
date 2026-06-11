@@ -224,7 +224,7 @@ ul.clean li::before{content:"";position:absolute;left:2px;top:7px;width:8px;heig
 @media(max-width:720px){.player{flex-direction:column;align-items:flex-start;gap:8px}.player .phead{flex-basis:auto}}
 /* ---- flowchart status (zoom/drag) ---- */
 .fcwrap{position:relative;border:1px solid var(--line);border-radius:16px;background:#eceef2;margin:8px 0;overflow:hidden}
-.fcview{aspect-ratio:1340/884;max-height:82vh;min-height:440px;max-width:100%;overflow:hidden;cursor:grab;position:relative;touch-action:none;border-radius:15px}
+.fcview{width:100%;height:clamp(440px,66vw,82vh);overflow:hidden;cursor:grab;position:relative;touch-action:none;border-radius:15px}
 .fcview.drag{cursor:grabbing}
 .fcstage{position:absolute;top:0;left:0;width:1340px;height:884px;transform-origin:0 0;font-family:'Be Vietnam Pro',sans-serif}
 .fctools{position:absolute;right:12px;bottom:12px;display:flex;gap:6px;align-items:center;z-index:20}
