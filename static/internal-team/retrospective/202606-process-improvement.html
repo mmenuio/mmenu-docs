@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đề xuất quy trình cải tiến — Mmenu Team 6/2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:    #EF3942;
+  --red-dk: #C8272F;
+  --gold:   #FFD58A;
+  --gold-dk:#E6A800;
+  --blue:   #005EFF;
+  --blue-lt:#EFF6FF;
+  --green:  #27C840;
+  --navy:   #1A2540;
+  --ink:    #1F2937;
+  --muted:  #6B7280;
+  --light:  #F9FAFB;
+  --border: #E5E7EB;
+  --white:  #ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;font-family:'Be Vietnam Pro',sans-serif;background:#111;}
+
+/* ── Slide container ── */
+.deck{
+  width:100%;height:100%;
+  overflow-y:scroll;
+  scroll-snap-type:y mandatory;
+  scroll-behavior:smooth;
+}
+.slide{
+  width:100%;height:100vh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ── Nav dots ── */
+.nav{
+  position:fixed;right:22px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:8px;z-index:100;
+}
+.dot{
+  width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);
+  cursor:pointer;transition:.3s;border:1px solid rgba(255,255,255,.4);
+}
+.dot.active{background:white;transform:scale(1.3);}
+
+/* ── Slide counter ── */
+.counter{
+  position:fixed;bottom:20px;right:28px;
+  color:rgba(255,255,255,.5);font-size:12px;z-index:100;
+  font-family:'Be Vietnam Pro',sans-serif;
+}
+
+/* ══════════════════════════════════
+   SLIDE 1 — COVER
+══════════════════════════════════ */
+#s1{background:var(--navy);}
+#s1 .bg-circle{
+  position:absolute;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(239,57,66,.25) 0%,transparent 70%);
+  top:-100px;left:-150px;
+}
+#s1 .bg-circle2{
+  position:absolute;width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,213,138,.12) 0%,transparent 70%);
+  bottom:-80px;right:-80px;
+}
+#s1 .content{
+  position:relative;z-index:2;text-align:center;padding:40px;
+}
+#s1 .tag{
+  display:inline-block;background:rgba(239,57,66,.2);
+  border:1px solid rgba(239,57,66,.4);
+  color:#FF8088;border-radius:20px;padding:6px 18px;
+  font-size:13px;font-weight:600;letter-spacing:.5px;margin-bottom:28px;
+}
+#s1 h1{
+  font-family:'Baloo 2',cursive;
+  font-size:clamp(32px,4.5vw,58px);
+  color:white;line-height:1.15;margin-bottom:16px;
+}
+#s1 h1 span{color:var(--red);}
+#s1 .sub{
+  color:rgba(255,255,255,.6);font-size:clamp(14px,1.6vw,18px);
+  margin-bottom:48px;max-width:600px;margin-left:auto;margin-right:auto;
+}
+#s1 .pills{
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+}
+#s1 .pill{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  border-radius:12px;padding:14px 24px;
+}
+#s1 .pill-num{
+  font-family:'Baloo 2',cursive;font-size:32px;color:white;line-height:1;
+}
+#s1 .pill-num span{color:var(--gold);}
+#s1 .pill-lbl{color:rgba(255,255,255,.55);font-size:12px;margin-top:4px;}
+
+/* ══════════════════════════════════
+   SLIDE 2 — TỔNG QUAN
+══════════════════════════════════ */
+#s2{background:#F4F6FA;}
+#s2 .inner{width:min(860px,90%);padding:0 16px;}
+#s2 .slide-label{
+  font-size:12px;font-weight:700;color:var(--red);letter-spacing:1.5px;
+  text-transform:uppercase;margin-bottom:10px;
+}
+#s2 h2{
+  font-family:'Baloo 2',cursive;font-size:clamp(24px,3vw,38px);
+  color:var(--navy);margin-bottom:8px;
+}
+#s2 .desc{color:var(--muted);font-size:15px;margin-bottom:32px;max-width:620px;}
+#s2 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;}
+#s2 .kpi{
+  background:white;border-radius:14px;padding:20px;
+  border:1px solid var(--border);text-align:center;
+}
+#s2 .kpi-num{font-family:'Baloo 2',cursive;font-size:36px;color:var(--red);line-height:1;}
+#s2 .kpi-lbl{font-size:12px;color:var(--muted);margin-top:4px;}
+#s2 .topics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+#s2 .topic{
+  background:white;border-radius:10px;padding:14px 16px;
+  border-left:3px solid var(--red);border:1px solid var(--border);
+  border-left:3px solid var(--red);
+}
+#s2 .topic-num{font-size:11px;font-weight:700;color:var(--red);margin-bottom:3px;}
+#s2 .topic-name{font-size:13px;font-weight:600;color:var(--ink);}
+
+/* ══════════════════════════════════
+   Q slides — shared
+══════════════════════════════════ */
+.q-slide{background:white;}
+.q-slide .inner{
+  width:min(920px,90%);padding:0 16px;
+  display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:start;
+}
+.q-left{}
+.q-badge{
+  display:inline-block;border-radius:8px;padding:6px 14px;
+  font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.q-num{
+  font-family:'Baloo 2',cursive;font-size:clamp(28px,3vw,40px);
+  color:var(--navy);line-height:1.15;margin-bottom:12px;
+}
+.q-num span{display:block;font-size:clamp(13px,1.4vw,16px);
+  font-family:'Be Vietnam Pro',sans-serif;font-weight:400;
+  color:var(--muted);margin-bottom:4px;}
+.q-context{
+  font-size:13px;color:var(--muted);line-height:1.7;
+  border-left:2px solid var(--border);padding-left:14px;margin-top:16px;
+}
+.q-right{padding-top:4px;}
+.theme-cards{display:flex;flex-direction:column;gap:12px;}
+.tcard{
+  border-radius:12px;padding:16px 18px;
+  border:1px solid var(--border);
+}
+.tcard-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px;}
+.tcard-name{font-size:14px;font-weight:700;color:var(--ink);}
+.vote{
+  border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;
+  white-space:nowrap;flex-shrink:0;
+}
+.vote.hi{background:#FEE2E2;color:#B91C1C;}
+.vote.md{background:#DBEAFE;color:#1D4ED8;}
+.vote.lo{background:#F3F4F6;color:var(--muted);}
+.tcard-desc{font-size:13px;color:#4B5563;line-height:1.65;}
+.tcard-quote{
+  margin-top:10px;font-size:12px;color:var(--muted);
+  background:#F9FAFB;border-radius:6px;padding:8px 12px;
+  border-left:2px solid var(--border);
+  line-height:1.6;
+}
+.tcard-quote b{color:var(--muted);font-weight:700;}
+
+.insight{
+  margin-top:14px;border-radius:10px;padding:12px 16px;
+  font-size:13px;color:#92400E;line-height:1.6;
+}
+.insight b{color:#78350F;}
+
+/* accent colors per slide */
+.acc-red   .q-badge{background:#FEE2E2;color:var(--red);}
+.acc-red   .tcard:first-child{background:#FEF9F9;border-color:#FECACA;}
+.acc-red   .tcard:first-child .tcard-name{color:var(--red-dk);}
+.acc-red   .insight{background:#FFF7ED;border:1px solid #FED7AA;}
+
+.acc-blue  .q-badge{background:#DBEAFE;color:var(--blue);}
+.acc-blue  .tcard:first-child{background:#EFF6FF;border-color:#BFDBFE;}
+.acc-blue  .tcard:first-child .tcard-name{color:#1D4ED8;}
+.acc-blue  .insight{background:#EFF6FF;border:1px solid #BFDBFE;color:#1E3A5F;}
+.acc-blue  .insight b{color:#1D4ED8;}
+
+.acc-gold  .q-badge{background:#FEF9C3;color:#92400E;}
+.acc-gold  .tcard:first-child{background:#FFFBEB;border-color:#FDE68A;}
+.acc-gold  .tcard:first-child .tcard-name{color:#92400E;}
+.acc-gold  .insight{background:#FFFBEB;border:1px solid #FDE68A;}
+
+.acc-green .q-badge{background:#DCFCE7;color:#166534;}
+.acc-green .tcard:first-child{background:#F0FDF4;border-color:#BBF7D0;}
+.acc-green .tcard:first-child .tcard-name{color:#166534;}
+.acc-green .insight{background:#F0FDF4;border:1px solid #BBF7D0;color:#14532D;}
+.acc-green .insight b{color:#166534;}
+
+/* dark slides */
+.q-slide.dark{background:var(--navy);}
+.q-slide.dark .q-num{color:white;}
+.q-slide.dark .q-context{color:rgba(255,255,255,.5);border-color:rgba(255,255,255,.15);}
+.q-slide.dark .tcard{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);}
+.q-slide.dark .tcard-name{color:white;}
+.q-slide.dark .tcard-desc{color:rgba(255,255,255,.65);}
+.q-slide.dark .tcard-quote{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1);color:rgba(255,255,255,.5);}
+.q-slide.dark .tcard-quote b{color:rgba(255,255,255,.6);}
+.q-slide.dark .insight{background:rgba(255,213,138,.1);border:1px solid rgba(255,213,138,.25);color:rgba(255,255,255,.75);}
+.q-slide.dark .insight b{color:var(--gold);}
+
+/* ══════════════════════════════════
+   SLIDE 9 — SUMMARY
+══════════════════════════════════ */
+#s9{background:linear-gradient(135deg,var(--navy) 0%,#2D1B69 100%);}
+#s9 .inner{width:min(900px,90%);padding:0 16px;}
+#s9 .slide-label{
+  font-size:12px;font-weight:700;color:var(--gold);
+  letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;
+}
+#s9 h2{
+  font-family:'Baloo 2',cursive;font-size:clamp(22px,2.8vw,36px);
+  color:white;margin-bottom:6px;
+}
+#s9 .sub{color:rgba(255,255,255,.5);font-size:14px;margin-bottom:28px;}
+#s9 .cards{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+#s9 .card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;padding:18px 14px;
+}
+#s9 .card-icon{font-size:22px;margin-bottom:10px;}
+#s9 .card-num{
+  font-family:'Baloo 2',cursive;font-size:11px;font-weight:700;
+  color:rgba(255,255,255,.35);letter-spacing:1px;margin-bottom:6px;
+}
+#s9 .card-title{font-size:13px;font-weight:700;color:white;margin-bottom:6px;line-height:1.4;}
+#s9 .card-desc{font-size:11.5px;color:rgba(255,255,255,.5);line-height:1.6;}
+#s9 .bottom{
+  margin-top:22px;background:rgba(255,213,138,.1);
+  border:1px solid rgba(255,213,138,.25);border-radius:10px;
+  padding:14px 20px;display:flex;align-items:center;gap:12px;
+}
+#s9 .bottom-text{font-size:13px;color:rgba(255,255,255,.75);line-height:1.5;}
+#s9 .bottom-text b{color:var(--gold);}
+
+</style>
+</head>
+<body>
+<a href="index.html" style="
+  position:fixed;top:16px;left:16px;z-index:9999;
+  display:flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);
+  color:rgba(255,255,255,0.85);text-decoration:none;
+  border-radius:20px;padding:6px 14px 6px 10px;
+  font-family:'Be Vietnam Pro',sans-serif;font-size:12px;font-weight:600;
+  backdrop-filter:blur(8px);transition:.2s;
+" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.12)'">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+Quay lại
+</a>
+
+<div class="deck" id="deck">
+
+  <!-- ── S1: Cover ── -->
+  <div class="slide" id="s1">
+    <div class="bg-circle"></div>
+    <div class="bg-circle2"></div>
+    <div class="content">
+      <div class="tag">RETROSPECTIVE · THÁNG 6/2026</div>
+      <h1>Chúng ta muốn<br><span>quy trình như thế nào?</span></h1>
+      <p class="sub">Tổng hợp đề xuất từ toàn team sau buổi họp nhìn lại quy trình phát triển và xử lý lỗi</p>
+      <div class="pills">
+        <div class="pill">
+          <div class="pill-num"><span>18</span></div>
+          <div class="pill-lbl">thành viên đóng góp</div>
+        </div>
+        <div class="pill">
+          <div class="pill-num"><span>6</span></div>
+          <div class="pill-lbl">chủ đề quy trình</div>
+        </div>
+        <div class="pill">
+          <div class="pill-num">21–23<span>/6</span></div>
+          <div class="pill-lbl">thời gian điền form</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── S2: Tổng quan ── -->
+  <div class="slide" id="s2">
+    <div class="inner">
+      <div class="slide-label">Tổng quan</div>
+      <h2>Form đề xuất quy trình — kết quả</h2>
+      <p class="desc">Sau buổi họp retrospective về chất lượng sản phẩm, toàn team được mời đóng góp đề xuất cụ thể cho 6 chủ đề quy trình.</p>
+      <div class="kpi-row">
+        <div class="kpi">
+          <div class="kpi-num">18</div>
+          <div class="kpi-lbl">người điền form</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-num" style="color:var(--blue)">18/19</div>
+          <div class="kpi-lbl">tỉ lệ hoàn thành</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-num" style="color:var(--gold-dk)">3</div>
+          <div class="kpi-lbl">ngày thu thập</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-num" style="color:var(--green)">5</div>
+          <div class="kpi-lbl">điểm đồng thuận cao</div>
+        </div>
+      </div>
+      <div class="topics">
+        <div class="topic"><div class="topic-num">CHỦ ĐỀ 1</div><div class="topic-name">Hiểu rõ vấn đề mình đang giải quyết</div></div>
+        <div class="topic"><div class="topic-num">CHỦ ĐỀ 2</div><div class="topic-name">Làm tính năng mới không gây lỗi mới</div></div>
+        <div class="topic"><div class="topic-num">CHỦ ĐỀ 3</div><div class="topic-name">Thế nào là lỗi?</div></div>
+        <div class="topic"><div class="topic-num">CHỦ ĐỀ 4</div><div class="topic-name">Cần làm gì khi có lỗi</div></div>
+        <div class="topic"><div class="topic-num">CHỦ ĐỀ 5</div><div class="topic-name">Nâng cao kỹ năng tìm hiểu vấn đề</div></div>
+        <div class="topic"><div class="topic-num">CHỦ ĐỀ 6</div><div class="topic-name">Lưu lại bài học từ những lỗi đã gặp</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── S3: Q1 ── -->
+  <div class="slide q-slide acc-red" id="s3">
+    <div class="inner">
+      <div class="q-left">
+        <div class="q-badge">Chủ đề 1</div>
+        <div class="q-num">
+          <span>Câu hỏi</span>
+          Hiểu rõ vấn đề mình đang giải quyết
+        </div>
+        <div class="q-context">
+          Bạn đề xuất cơ chế nào để đảm bảo mỗi người hiểu rõ task trước khi bắt tay làm?
+        </div>
+      </div>
+      <div class="q-right">
+        <div class="theme-cards">
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Issue phải có đủ Why + What + Expected output</div>
+              <div class="vote hi">12+ người</div>
+            </div>
+            <div class="tcard-desc">Tiêu chí "task đủ để bắt đầu": người thực hiện giải thích lại được bài toán, luồng chính, và các case cần lưu ý — mà không cần suy đoán thêm.</div>
+            <div class="tcard-quote"><b>donhuthoa:</b> Bắt buộc trả lời rõ input là gì, output là gì, case lỗi — không trả lời được → chưa được làm</div>
+          </div>
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Bước confirm / chốt hiểu trước khi bắt đầu làm</div>
+              <div class="vote md">8 người</div>
+            </div>
+            <div class="tcard-desc">Thêm bước xác nhận ngắn giữa người thực hiện và người tạo task — không phải meeting dài, có thể confirm async qua comment hoặc HOW plan.</div>
+            <div class="tcard-quote"><b>txdat:</b> Dev lên plan → kiểm tra lại các luồng ảnh hưởng → BA, QA review plan trước khi code</div>
+          </div>
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">HOW plan từ góc kỹ thuật — không chỉ nghiệp vụ</div>
+              <div class="vote lo">3 người</div>
+            </div>
+            <div class="tcard-desc">Hiện HOW chủ yếu mô tả nghiệp vụ. Đề xuất thêm HOW kỹ thuật: module nào, luồng code nào, function nào sẽ bị chạm — để tự xác định phạm vi trước khi code.</div>
+          </div>
+        </div>
+        <div class="insight"><b>Điểm đồng thuận:</b> Issue phải đủ để người làm hiểu mà không cần hỏi thêm. Nếu phải hỏi nhiều → issue chưa đủ, không phải người đọc chưa giỏi.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── S4: Q2 ── -->
+  <div class="slide q-slide acc-blue" id="s4">
+    <div class="inner">
+      <div class="q-left">
+        <div class="q-badge">Chủ đề 2</div>
+        <div class="q-num">
+          <span>Câu hỏi</span>
+          Làm tính năng mới không gây lỗi mới
+        </div>
+        <div class="q-context">
+          Bạn đề xuất thêm/thay đổi bước nào trong quy trình để giảm lỗi khi release — cả lỗi chính tính năng đó lẫn lỗi lây sang tính năng khác?
+        </div>
+      </div>
+      <div class="q-right">
+        <div class="theme-cards">
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Viết test / viết test trước khi code (TDD)</div>
+              <div class="vote hi">8 người</div>
+            </div>
+            <div class="tcard-desc">Đề xuất bắt buộc viết test trước khi merge. Một số đề xuất TDD — viết test trước khi viết code để buộc phải hiểu rõ expected behavior trước.</div>
+            <div class="tcard-quote"><b>lovekid1997:</b> Nếu tính năng mới cần viết test trước khi viết code</div>
+          </div>
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Rà soát codebase — không viết lại code đang chạy ổn</div>
+              <div class="vote md">7 người</div>
+            </div>
+            <div class="tcard-desc">Trước khi bắt tay code, kiểm tra xem có tính năng/logic tương tự đã có không. Không suy đoán, phải có dẫn chứng từ source code hoặc log.</div>
+            <div class="tcard-quote"><b>Tranhuutukkt:</b> Không tự suy đoán — luôn cần dẫn chứng về nguồn code, log, hình ảnh hoặc video</div>
+          </div>
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Tự review impact checklist sau khi code xong</div>
+              <div class="vote md">6 người</div>
+            </div>
+            <div class="tcard-desc">Trước khi tạo PR, người làm tự liệt kê các tính năng/luồng có thể bị ảnh hưởng → QA dựa vào đó để test thêm ngoài happy path.</div>
+          </div>
+        </div>
+        <div class="insight"><b>Đề xuất cụ thể nhất:</b> Thêm "impact checklist" vào quy trình tạo PR — người làm tự điền, QA dựa vào đó test thêm.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── S5: Q3 ── -->
+  <div class="slide q-slide acc-gold" id="s5">
+    <div class="inner">
+      <div class="q-left">
+        <div class="q-badge">Chủ đề 3</div>
+        <div class="q-num">
+          <span>Câu hỏi</span>
+          Thế nào là lỗi?
+        </div>
+        <div class="q-context">
+          Bạn đề xuất tiêu chí nào để team thống nhất "cái này là lỗi cần xử lý"?
+        </div>
+      </div>
+      <div class="q-right">
+        <div class="theme-cards">
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Phân 3 loại: Bug thật / Thiếu spec / Case chưa nghĩ tới</div>
+              <div class="vote hi">10 người</div>
+            </div>
+            <div class="tcard-desc">Team hay lẫn giữa 3 loại → tranh cãi không cần thiết. Bug thật = hệ thống làm sai so với đã chốt. Thiếu spec = quay lại làm rõ, không lao vào sửa code.</div>
+            <div class="tcard-quote"><b>avpegnu:</b> Thiếu mô tả → không nên lao vào sửa code, mà phải quay lại làm rõ yêu cầu</div>
+          </div>
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Phân mức ưu tiên P0 / P1 / P2 — viết ra, không hiểu ngầm</div>
+              <div class="vote md">8 người</div>
+            </div>
+            <div class="tcard-desc">P0: lệch tiền/dữ liệu, chặn luồng bán hàng → fix ngay. P1: sai hành vi nhưng có workaround. P2: lỗi UI nhỏ, edge case hiếm, không đụng tiền.</div>
+            <div class="tcard-quote"><b>DatMQhust:</b> Lỗi cài đặt sai → trách nhiệm CSKH, team báo lại cho CSKH để sửa (không phải bug)</div>
+          </div>
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Khi không đồng ý → có một điểm chốt rõ ràng</div>
+              <div class="vote lo">5 người</div>
+            </div>
+            <div class="tcard-desc">Tiêu chí phân loại phải được viết ra, không chỉ "hiểu ngầm". Khi team không đồng ý về mức độ một lỗi, cần có người/role chốt dựa trên tiêu chí đó.</div>
+          </div>
+        </div>
+        <div class="insight"><b>Đề xuất cụ thể nhất:</b> Tạo checklist "đây là lỗi" + bảng P0/P1/P2 với tiêu chí rõ → viết ra document, áp dụng thống nhất toàn team.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── S6: Q4 ── -->
+  <div class="slide q-slide dark" id="s6">
+    <div class="inner">
+      <div class="q-left">
+        <div class="q-badge" style="background:rgba(239,57,66,.2);color:#FF8088;">Chủ đề 4</div>
+        <div class="q-num">
+          <span>Câu hỏi</span>
+          Cần làm gì khi có lỗi
+        </div>
+        <div class="q-context">
+          Bạn đề xuất các bước cụ thể khi phát hiện lỗi — ai làm gì, theo thứ tự nào?
+        </div>
+      </div>
+      <div class="q-right">
+        <div class="theme-cards">
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Quy trình chuẩn: Tái hiện → Log → Owner → Fix → Verify</div>
+              <div class="vote hi">14 người</div>
+            </div>
+            <div class="tcard-desc">Đa số đồng ý quy trình theo thứ tự: tái hiện lỗi → check log, check setting nhà hàng → xác định owner và thông báo sớm → fix → verify tính năng liên quan. <b style="color:rgba(255,255,255,.75)">Thông báo sớm</b> được nhấn mạnh — phát hiện thì báo ngay, không chờ tự giải quyết được mới báo.</div>
+            <div class="tcard-quote"><b>hinne-231203:</b> Kiểm tra cài đặt → tái hiện lỗi → khó quá thì check log</div>
+          </div>
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Sau fix: checklist verify + incident note</div>
+              <div class="vote md">7 người</div>
+            </div>
+            <div class="tcard-desc">Sau khi fix xong không phải là "xong". Cần checklist verify tính năng liên quan + ghi lại incident note ngắn để không lặp lại.</div>
+            <div class="tcard-quote"><b>Tranhuutukkt:</b> Sau khi fix xong, dựa trên codebase kiểm tra lại các tính năng ảnh hưởng — thêm checklist lỗi cần theo dõi theo ngày/tuần</div>
+          </div>
+        </div>
+        <div class="insight"><b>Điểm quan trọng nhất:</b> Báo sớm khi phát hiện lỗi — không chờ tự debug xong mới báo. Mọi người đều có thể bắt đầu debug song song.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── S7: Q5 ── -->
+  <div class="slide q-slide acc-green" id="s7">
+    <div class="inner">
+      <div class="q-left">
+        <div class="q-badge">Chủ đề 5</div>
+        <div class="q-num">
+          <span>Câu hỏi</span>
+          Nâng cao kỹ năng tìm hiểu vấn đề
+        </div>
+        <div class="q-context">
+          Bạn đề xuất hoạt động hoặc cơ chế nào để cả team có thể tự bắt đầu debug — kể cả ở tính năng chưa từng làm?
+        </div>
+      </div>
+      <div class="q-right">
+        <div class="theme-cards">
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Runbook / SOP / tài liệu tra cứu theo tính năng</div>
+              <div class="vote hi">11 người</div>
+            </div>
+            <div class="tcard-desc">Cần tài liệu tra cứu để khi gặp lỗi ở tính năng chưa làm, vẫn có thể tự bắt đầu theo đó — không phải hỏi người làm tính năng. Runbook per module, FAQ per feature, hoặc SOP chung per loại vấn đề.</div>
+            <div class="tcard-quote"><b>lovekid1997:</b> Xây dựng 1 SOP giống CSKH để có template chung research trước khi hỏi</div>
+          </div>
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Tận dụng AI — không thay người, mà để không bắt đầu từ 0</div>
+              <div class="vote md">4 người</div>
+            </div>
+            <div class="tcard-desc">Cung cấp context cho AI khi gặp lỗi: log, luồng code, incident cũ → AI giúp suggest hướng debug. Xây knowledge base để AI có thể tra cứu history.</div>
+            <div class="tcard-quote"><b>avpegnu:</b> Cung cấp context + lesson learn cho AI để lần sau làm và review — xây website tài liệu nội bộ tổng hợp history</div>
+          </div>
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">"Muốn nhanh thì phải từ từ" — dành thời gian tìm hiểu trước khi làm</div>
+              <div class="vote lo">3 người</div>
+            </div>
+            <div class="tcard-desc">Không ngại về việc mình chưa biết. Giai đoạn tìm hiểu — đọc code, trace luồng, hỏi AI — là đầu tư vào chất lượng, không phải lãng phí thời gian.</div>
+            <div class="tcard-quote"><b>tuci31203:</b> Không phải ngại về việc mình chưa biết — muốn nhanh thì phải từ từ</div>
+          </div>
+        </div>
+        <div class="insight"><b>Kết luận:</b> Runbook/tài liệu tra cứu per tính năng là thứ team cần xây — để không phụ thuộc vào 1–2 người khi có lỗi.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── S8: Q6 ── -->
+  <div class="slide q-slide acc-red" id="s8">
+    <div class="inner">
+      <div class="q-left">
+        <div class="q-badge">Chủ đề 6</div>
+        <div class="q-num">
+          <span>Câu hỏi</span>
+          Lưu lại bài học từ những lỗi đã gặp
+        </div>
+        <div class="q-context">
+          Bạn đề xuất cách nào để team không phải bắt đầu từ đầu mỗi lần gặp lỗi tương tự?
+        </div>
+      </div>
+      <div class="q-right">
+        <div class="theme-cards">
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Viết incident report — dù lỗi nhỏ, thành quy trình thống nhất</div>
+              <div class="vote hi">12 người</div>
+            </div>
+            <div class="tcard-desc">Mọi lỗi đều cần incident report, không chỉ lỗi lớn. Report phải có root cause + action items cụ thể — không phải viết xong để đấy. Action items phải được theo dõi và close.</div>
+            <div class="tcard-quote"><b>lovekid1997:</b> Viết incident dù cho lỗi nhỏ nhất, thành 1 quy trình thống nhất về sau</div>
+          </div>
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Wiki / knowledge base tập trung — ai cũng tra cứu được</div>
+              <div class="vote md">9 người</div>
+            </div>
+            <div class="tcard-desc">Một nơi tập trung để lưu lỗi đã gặp, hướng xử lý, root cause. Không phải chat history hay issue cũ khó tìm — mà là doc/wiki có thể search và cập nhật được.</div>
+            <div class="tcard-quote"><b>avpegnu:</b> Xây dựng website tài liệu nội bộ + incident report — mỗi lần incident thì update lên, không phải follow up liên tục</div>
+          </div>
+          <div class="tcard">
+            <div class="tcard-top">
+              <div class="tcard-name">Incident phải được team review — kiến thức mới lan được ra</div>
+              <div class="vote lo">4 người</div>
+            </div>
+            <div class="tcard-desc">Report không phải 1 người viết 1 mình rồi thôi. Cần team đọc và confirm — review trong daily meeting hoặc async qua comment — để mọi người cùng học từ 1 incident.</div>
+          </div>
+        </div>
+        <div class="insight"><b>2 thứ cần xây trước tiên:</b> Incident report thống nhất (kể cả lỗi nhỏ) + wiki tập trung có thể search — đây là 2 điểm được nhắc nhiều nhất.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── S9: Summary ── -->
+  <div class="slide" id="s9">
+    <div class="inner">
+      <div class="slide-label">Tổng kết</div>
+      <h2>5 điểm team đồng thuận cao nhất</h2>
+      <p class="sub">Những đề xuất xuất hiện nhiều nhất và có tính khả thi cao để triển khai ngay</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">📋</div>
+          <div class="card-num">ĐỀ XUẤT 1</div>
+          <div class="card-title">Issue chuẩn = người làm giải thích lại được</div>
+          <div class="card-desc">Why + What + Expected output rõ ràng. Không trả lời được → chưa được làm.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">✅</div>
+          <div class="card-num">ĐỀ XUẤT 2</div>
+          <div class="card-title">Viết test + impact checklist trước khi tạo PR</div>
+          <div class="card-desc">Tự liệt kê tính năng có thể bị ảnh hưởng. QA dựa vào đó test thêm.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <div class="card-num">ĐỀ XUẤT 3</div>
+          <div class="card-title">Định nghĩa lỗi + P0/P1/P2 — viết ra, không hiểu ngầm</div>
+          <div class="card-desc">Phân biệt bug thật / thiếu spec / case chưa nghĩ tới. Có người chốt khi bất đồng.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📖</div>
+          <div class="card-num">ĐỀ XUẤT 4</div>
+          <div class="card-title">Runbook / tài liệu tra cứu per tính năng</div>
+          <div class="card-desc">Người chưa làm tính năng đó vẫn có điểm bắt đầu debug.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📝</div>
+          <div class="card-num">ĐỀ XUẤT 5</div>
+          <div class="card-title">Incident report thống nhất + wiki tập trung</div>
+          <div class="card-desc">Mọi lỗi đều có doc sau fix. Tập trung 1 nơi, search được, team review qua.</div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div style="font-size:24px">💬</div>
+        <div class="bottom-text">
+          Đây là tiếng nói của team — <b>18/19 người</b> đã đóng góp. Bước tiếp theo: cùng chốt xem bắt đầu từ đâu và ai làm gì.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /deck -->
+
+<!-- Nav dots -->
+<div class="nav" id="nav"></div>
+<div class="counter" id="counter">1 / 9</div>
+
+<script>
+const deck  = document.getElementById('deck');
+const nav   = document.getElementById('nav');
+const counter = document.getElementById('counter');
+const slides  = document.querySelectorAll('.slide');
+const N = slides.length;
+
+// Build dots
+slides.forEach((_,i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i===0?' active':'');
+  d.onclick = () => slides[i].scrollIntoView({behavior:'smooth'});
+  nav.appendChild(d);
+});
+
+const dots = document.querySelectorAll('.dot');
+
+// Intersection Observer
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting && e.intersectionRatio > 0.5) {
+      const idx = [...slides].indexOf(e.target);
+      dots.forEach((d,i) => d.classList.toggle('active', i===idx));
+      counter.textContent = (idx+1) + ' / ' + N;
+    }
+  });
+}, {root: deck, threshold: 0.5});
+
+slides.forEach(s => io.observe(s));
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  const cur = [...slides].findIndex(s => {
+    const r = s.getBoundingClientRect();
+    return r.top >= -10 && r.top <= 10;
+  });
+  if(e.key==='ArrowDown'||e.key==='PageDown'||e.key===' ') {
+    e.preventDefault();
+    if(cur<N-1) slides[cur+1].scrollIntoView({behavior:'smooth'});
+  }
+  if(e.key==='ArrowUp'||e.key==='PageUp') {
+    e.preventDefault();
+    if(cur>0) slides[cur-1].scrollIntoView({behavior:'smooth'});
+  }
+});
+</script>
+</body>
+</html>

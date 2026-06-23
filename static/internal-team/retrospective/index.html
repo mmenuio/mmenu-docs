@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retrospective — Mmenu Internal Team</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#EF3942;--navy:#1A2540;--gold:#FFD58A;
+  --ink:#1F2937;--muted:#6B7280;--border:#E5E7EB;
+  --bg:#F9FAFB;--white:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Be Vietnam Pro',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+
+.header{
+  background:var(--navy);padding:48px 40px 52px;
+  position:relative;overflow:hidden;
+}
+.header::before{
+  content:'';position:absolute;width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(239,57,66,.2) 0%,transparent 70%);
+  top:-200px;right:-100px;pointer-events:none;
+}
+.header-inner{max-width:860px;margin:0 auto;position:relative;z-index:1;}
+.header-tag{
+  display:inline-block;background:rgba(239,57,66,.2);border:1px solid rgba(239,57,66,.35);
+  color:#FF8088;border-radius:20px;padding:5px 16px;font-size:12px;font-weight:700;
+  letter-spacing:.5px;margin-bottom:16px;
+}
+.header h1{
+  font-family:'Baloo 2',cursive;font-size:clamp(26px,3.5vw,42px);
+  color:white;line-height:1.2;margin-bottom:10px;
+}
+.header p{color:rgba(255,255,255,.55);font-size:15px;max-width:520px;}
+
+.main{max-width:860px;margin:0 auto;padding:48px 24px 80px;}
+
+.section-label{
+  font-size:11px;font-weight:700;color:var(--muted);
+  letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;
+}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px;}
+
+.card{
+  background:var(--white);border-radius:16px;
+  border:1px solid var(--border);overflow:hidden;
+  text-decoration:none;color:inherit;
+  transition:transform .2s,box-shadow .2s;
+  display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.1);}
+
+.card-top{
+  height:8px;background:linear-gradient(90deg,var(--red),#FF6B6B);
+}
+.card-top.blue{background:linear-gradient(90deg,#005EFF,#3B82F6);}
+
+.card-body{padding:24px;flex:1;}
+.card-date{font-size:12px;color:var(--muted);margin-bottom:10px;}
+.card-title{
+  font-family:'Baloo 2',cursive;font-size:20px;
+  color:var(--navy);margin-bottom:8px;line-height:1.3;
+}
+.card-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:16px;}
+
+.card-tags{display:flex;gap:8px;flex-wrap:wrap;}
+.tag{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:20px;padding:4px 12px;font-size:11px;color:var(--muted);font-weight:500;
+}
+
+.card-footer{
+  padding:16px 24px;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.card-cta{
+  font-size:13px;font-weight:700;color:var(--red);
+  display:flex;align-items:center;gap:6px;
+}
+.card-cta svg{transition:transform .2s;}
+.card:hover .card-cta svg{transform:translateX(4px);}
+
+.card-slides{font-size:12px;color:var(--muted);}
+
+.empty{
+  grid-column:1/-1;text-align:center;
+  padding:60px 24px;color:var(--muted);
+  background:white;border-radius:16px;border:1px dashed var(--border);
+}
+.empty p{font-size:14px;margin-top:8px;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-tag">MMENU INTERNAL TEAM</div>
+    <h1>Retrospective Hub</h1>
+    <p>Tổng hợp các buổi nhìn lại — kết quả khảo sát, đề xuất quy trình, và bài học từ thực tế.</p>
+  </div>
+</div>
+
+<div class="main">
+  <div class="section-label">Tháng 6 · 2026</div>
+  <div class="cards">
+
+    <a class="card" href="202606-how-to-resolve-bug.html">
+      <div class="card-top"></div>
+      <div class="card-body">
+        <div class="card-date">17–18/6/2026 · Khảo sát mindset</div>
+        <div class="card-title">Kết quả khảo sát — Mindset xử lý lỗi</div>
+        <div class="card-desc">19 thành viên chia sẻ góc nhìn về độ ổn định sản phẩm, kỹ năng debug, và sự tự tin khi có lỗi xảy ra.</div>
+        <div class="card-tags">
+          <span class="tag">19 người</span>
+          <span class="tag">Mindset</span>
+          <span class="tag">Bug & Debug</span>
+          <span class="tag">Độ ổn định</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-cta">Xem báo cáo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="card-slides">9 slides</div>
+      </div>
+    </a>
+
+    <a class="card" href="202606-process-improvement.html">
+      <div class="card-top blue"></div>
+      <div class="card-body">
+        <div class="card-date">21–23/6/2026 · Đề xuất quy trình</div>
+        <div class="card-title">Đề xuất quy trình cải tiến</div>
+        <div class="card-desc">18 thành viên đóng góp ý kiến về 6 chủ đề: issue chuẩn, không lặp lỗi, định nghĩa lỗi, quy trình xử lý, kỹ năng debug, và lưu lại bài học.</div>
+        <div class="card-tags">
+          <span class="tag">18 người</span>
+          <span class="tag">Quy trình</span>
+          <span class="tag">6 chủ đề</span>
+          <span class="tag">5 đề xuất chính</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-cta">Xem báo cáo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="card-slides">9 slides</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+</body>
+</html>
